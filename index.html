@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<!-- V1: Clean Minimal | AI Website Factory | GitHub→Vercel -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SURYA UNISEX SALON | Your Partner in Beauty Success</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2A9D8F;
+      --accent: #E9C46A;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all .3s ease;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #218277;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .btn-accent:hover {
+      background: #d9b45c;
+    }
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Poppins', sans-serif;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    nav a {
+      font-weight: 500;
+      color: var(--text);
+      transition: color .3s ease;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      transition: .3s;
+    }
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+        border-top: 1px solid var(--border);
+      }
+      nav.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .header-actions .btn {
+        display: none;
+      }
+    }
+    .hero {
+      padding: 6rem 0;
+      background: url('https://example.com/hero.jpg') center/cover no-repeat;
+      position: relative;
+      color: #fff;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .stats {
+      display: flex;
+      gap: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-item h3 {
+      font-size: 2rem;
+      margin-bottom: .25rem;
+    }
+    .stat-item p {
+      font-size: .9rem;
+      opacity: .9;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      .hero-btns {
+        flex-direction: column;
+      }
+      .stats {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    .services {
+      padding: 5rem 0;
+      background: var(--surface);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: 2.25rem;
+      margin-bottom: .5rem;
+    }
+    .section-header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      transition: transform .3s ease, box-shadow .3s ease;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    }
+    .service-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: #0f172a;
+      padding: .25rem .75rem;
+      border-radius: 20px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      margin-bottom: .5rem;
+    }
+    .service-card p {
+      color: var(--muted);
+    }
+    .about {
+      padding: 5rem 0;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-content h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    .about-content p {
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+    .about-content .btn {
+      margin-top: 1rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .about-stats-item {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+    }
+    .about-stats-item .icon {
+      font-size: 1.5rem;
+    }
+    .about-stats-item h4 {
+      font-size: 1.25rem;
+    }
+    .about-stats-item p {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    }
+    @media (max-width: 768px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .testimonials {
+      padding: 5rem 0;
+      background: var(--surface);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    }
+    .stars {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .testimonial-card p {
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+    .testimonial-card .name {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .testimonial-card .role {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .gallery {
+      padding: 5rem 0;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-grid img {
+      border-radius: 12px;
+      transition: transform .3s ease;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    .cta-banner {
+      padding: 4rem 0;
+      background: linear-gradient(90deg, var(--primary) 0%, #218277 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      margin-bottom: 2rem;
+      opacity: .9;
+    }
+    .cta-banner .btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .cta-banner .btns {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .contact {
+      padding: 5rem 0;
+      background: var(--surface);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      text-align: center;
+    }
+    .contact-card .icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .contact-card h3 {
+      margin-bottom: .5rem;
+    }
+    .contact-card p {
+      color: var(--muted);
+    }
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    }
+    footer {
+      padding: 3rem 0;
+      background: var(--text);
+      color: #fff;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+      color: var(--accent);
+    }
+    .footer-brand p {
+      opacity: .8;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .footer-links a {
+      opacity: .8;
+      transition: opacity .3s ease;
+    }
+    .footer-links a:hover {
+      opacity: 1;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: .9rem;
+      opacity: .7;
+    }
+    @media (max-width: 768px) {
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">SURYA UNISEX SALON</div>
+      <nav id="nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/919650713761" target="_blank" class="btn btn-primary">WhatsApp</a>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Your Partner in Beauty Success</h1>
+    <p>Discover top-notch salon services and premium beauty products tailored for you.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/919650713761" target="_blank" class="btn btn-accent">Book via WhatsApp</a>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+    <div class="stats">
+      <div class="stat-item">
+        <h3>4.3/5</h3>
+        <p>Customer Rating</p>
+      </div>
+      <div class="stat-item">
+        <h3>67</h3>
+        <p>Reviews</p>
+      </div>
+      <div class="stat-item">
+        <h3>5+</h3>
+        <p>Years of Service</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Our Services</h2>
+      <p>Experience a full range of beauty and grooming solutions crafted with care.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="badge">Popular</span>
+        <div class="service-icon">🗨️</div>
+        <h3>Consultation</h3>
+        <p>Personalized beauty consultations to help you choose the perfect look and products.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🛒</div>
+        <h3>Product Sales</h3>
+        <p>A curated selection of premium hair and skin care products available for purchase.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤝</div>
+        <h3>Customer Support</h3>
+        <p>Dedicated support to answer your queries and ensure a smooth experience.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💻</div>
+        <h3>Online Ordering</h3>
+        <p>Convenient online ordering for products and service appointments.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚚</div>
+        <h3>Delivery Service</h3>
+        <p>Fast and reliable delivery of your favorite beauty products to your doorstep.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🔧</div>
+        <h3>After-sales Service</h3>
+        <p>Ongoing assistance and product guidance after your purchase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-content reveal">
+        <h2>About Us</h2>
+        <p>At Surya Unisex Salon, we believe everyone deserves to look and feel their best. With over 5 years of experience in Kanpur, we offer expert salon services and high-quality beauty products designed to enhance your natural beauty.</p>
+        <p>Our skilled professionals are committed to providing personalized, friendly service in a relaxing environment. From haircuts to skin care, we have everything you need to shine.</p>
+        <div class="about-stats">
+          <div class="about-stats-item">
+            <span class="icon">📅</span>
+            <div>
+              <h4 data-count="10">0</h4>
+              <p>Years in Business</p>
+            </div>
+          </div>
